@@ -37,7 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuardarVenta = new System.Windows.Forms.Button();
             this.NumUDCantProd = new System.Windows.Forms.NumericUpDown();
+            this.btnAddProdVenta = new System.Windows.Forms.Button();
+            this.dgvProdVenta = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.NumUDCantProd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbClientes
@@ -103,7 +106,7 @@
             // 
             // btnGuardarVenta
             // 
-            this.btnGuardarVenta.Location = new System.Drawing.Point(140, 113);
+            this.btnGuardarVenta.Location = new System.Drawing.Point(143, 242);
             this.btnGuardarVenta.Name = "btnGuardarVenta";
             this.btnGuardarVenta.Size = new System.Drawing.Size(113, 23);
             this.btnGuardarVenta.TabIndex = 8;
@@ -128,11 +131,33 @@
             0,
             0});
             // 
+            // btnAddProdVenta
+            // 
+            this.btnAddProdVenta.Location = new System.Drawing.Point(143, 98);
+            this.btnAddProdVenta.Name = "btnAddProdVenta";
+            this.btnAddProdVenta.Size = new System.Drawing.Size(123, 23);
+            this.btnAddProdVenta.TabIndex = 10;
+            this.btnAddProdVenta.Text = "Añadir Producto";
+            this.btnAddProdVenta.UseVisualStyleBackColor = true;
+            this.btnAddProdVenta.Click += new System.EventHandler(this.btnAddProdVenta_Click);
+            // 
+            // dgvProdVenta
+            // 
+            this.dgvProdVenta.AllowUserToAddRows = false;
+            this.dgvProdVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdVenta.Location = new System.Drawing.Point(12, 127);
+            this.dgvProdVenta.Name = "dgvProdVenta";
+            this.dgvProdVenta.ReadOnly = true;
+            this.dgvProdVenta.Size = new System.Drawing.Size(363, 109);
+            this.dgvProdVenta.TabIndex = 11;
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 148);
+            this.ClientSize = new System.Drawing.Size(386, 276);
+            this.Controls.Add(this.dgvProdVenta);
+            this.Controls.Add(this.btnAddProdVenta);
             this.Controls.Add(this.NumUDCantProd);
             this.Controls.Add(this.btnGuardarVenta);
             this.Controls.Add(this.label2);
@@ -146,6 +171,7 @@
             this.Text = "FrmVentas";
             this.Load += new System.EventHandler(this.FrmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumUDCantProd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProdVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +188,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnGuardarVenta;
         private System.Windows.Forms.NumericUpDown NumUDCantProd;
+        private System.Windows.Forms.Button btnAddProdVenta;
+        private System.Windows.Forms.DataGridView dgvProdVenta;
     }
 }
