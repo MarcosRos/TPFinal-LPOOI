@@ -21,7 +21,7 @@ namespace Vistas
         private void btnCliAlta_Click(object sender, EventArgs e)
         {
             bool bVacio = false;
-            // Buscamos en cada Control de nuestro tabPage.
+            // Buscamos en cada Control de nuestro tabPage. a
             foreach (var ctrl in tabPageCli.Controls)
             {
                 //Preguntamos por cada TextBox de los controles del formulario
