@@ -50,6 +50,7 @@
             this.lblProdCodigo = new System.Windows.Forms.Label();
             this.lblProdCategoria = new System.Windows.Forms.Label();
             this.tabPageCli = new System.Windows.Forms.TabPage();
+            this.btn_OrdenarClientes = new System.Windows.Forms.Button();
             this.btnEditarCliente = new System.Windows.Forms.Button();
             this.btnEliminarCliente = new System.Windows.Forms.Button();
             this.btnBuscarCli = new System.Windows.Forms.Button();
@@ -136,14 +137,14 @@
             // listarVentasToolStripMenuItem
             // 
             this.listarVentasToolStripMenuItem.Name = "listarVentasToolStripMenuItem";
-            this.listarVentasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.listarVentasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.listarVentasToolStripMenuItem.Text = "Listar Ventas";
             this.listarVentasToolStripMenuItem.Click += new System.EventHandler(this.listarVentasToolStripMenuItem_Click);
             // 
             // agregarVentasToolStripMenuItem
             // 
             this.agregarVentasToolStripMenuItem.Name = "agregarVentasToolStripMenuItem";
-            this.agregarVentasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.agregarVentasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.agregarVentasToolStripMenuItem.Text = "Agregar Venta";
             this.agregarVentasToolStripMenuItem.Click += new System.EventHandler(this.agregarVentasToolStripMenuItem_Click);
             // 
@@ -270,6 +271,7 @@
             // 
             // tabPageCli
             // 
+            this.tabPageCli.Controls.Add(this.btn_OrdenarClientes);
             this.tabPageCli.Controls.Add(this.btnEditarCliente);
             this.tabPageCli.Controls.Add(this.btnEliminarCliente);
             this.tabPageCli.Controls.Add(this.btnBuscarCli);
@@ -301,6 +303,16 @@
             this.tabPageCli.TabIndex = 0;
             this.tabPageCli.Text = "Cliente";
             this.tabPageCli.UseVisualStyleBackColor = true;
+            // 
+            // btn_OrdenarClientes
+            // 
+            this.btn_OrdenarClientes.Location = new System.Drawing.Point(471, 312);
+            this.btn_OrdenarClientes.Name = "btn_OrdenarClientes";
+            this.btn_OrdenarClientes.Size = new System.Drawing.Size(202, 40);
+            this.btn_OrdenarClientes.TabIndex = 24;
+            this.btn_OrdenarClientes.Text = "Ordenar Por Apellido";
+            this.btn_OrdenarClientes.UseVisualStyleBackColor = true;
+            this.btn_OrdenarClientes.Click += new System.EventHandler(this.btn_OrdenarClientes_Click);
             // 
             // btnEditarCliente
             // 
@@ -592,6 +604,7 @@
 //revisar
         private System.Windows.Forms.Button btnEditarCliente;
         private System.Windows.Forms.Button btnEliminarCliente;
+        private System.Windows.Forms.Button btn_OrdenarClientes;
 
 
     }

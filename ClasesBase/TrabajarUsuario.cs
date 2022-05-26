@@ -280,8 +280,8 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM cliente";
-            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "getClientes";
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = cnn;
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -630,5 +630,25 @@ namespace ClasesBase
 
             return clienteAux;
         }
+
+
+        public static DataTable list_Cliente_Apellido()
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+            
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "getClientesPorApellido";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
     }
 }

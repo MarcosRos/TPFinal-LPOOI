@@ -266,12 +266,12 @@ namespace Vistas
         {
             if (dgvClientes.CurrentRow != null) 
             {
-                txtCliDni.Text = dgvClientes.CurrentRow.Cells["cli_DNI"].Value.ToString();
-                txtCliApellido.Text = dgvClientes.CurrentRow.Cells["cli_Apellido"].Value.ToString();
-                txtCliNombre.Text = dgvClientes.CurrentRow.Cells["cli_Nombre"].Value.ToString();
-                txtCliDireccion.Text = dgvClientes.CurrentRow.Cells["cli_Direccion"].Value.ToString();
-                cmbOS.SelectedValue = dgvClientes.CurrentRow.Cells["OS_CUIT"].Value.ToString();
-                txtCliNroCarnet.Text = dgvClientes.CurrentRow.Cells["cli_NroCarnet"].Value.ToString();
+                txtCliDni.Text = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
+                txtCliApellido.Text = dgvClientes.CurrentRow.Cells["Apellido"].Value.ToString();
+                txtCliNombre.Text = dgvClientes.CurrentRow.Cells["Nombre"].Value.ToString();
+                txtCliDireccion.Text = dgvClientes.CurrentRow.Cells["Direccion"].Value.ToString();
+                cmbOS.SelectedValue = dgvClientes.CurrentRow.Cells["ObraSocial"].Value.ToString();
+                txtCliNroCarnet.Text = dgvClientes.CurrentRow.Cells["NroCarnet"].Value.ToString();
             }
         }
 
@@ -301,6 +301,12 @@ namespace Vistas
                 dgvCliBuscar.DataSource = null;
             }
         }
+
+        private void btn_OrdenarClientes_Click(object sender, EventArgs e)
+        {
+            dgvClientes.DataSource = TrabajarUsuario.list_Cliente_Apellido();
+        }
+
 
     }
 }
