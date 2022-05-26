@@ -221,8 +221,8 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM producto";
-            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "getProductos";
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = cnn;
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -650,6 +650,100 @@ namespace ClasesBase
             return dt;
         }
 
-        //hola
+
+        public static DataTable list_Productos_Categoria()
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getProductosPorCategoria";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+
+        public static DataTable list_Productos_Descripcion()
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getProductosPorDescripcion";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DataTable list_Productos_Segun_Cliente(int dni)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getProductosSegunCliente";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@cliente",dni);
+            cmd.Connection = cnn;
+            
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+
+        public static DataTable list_Ventas_Segun_Cliente(int dni)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getVentasSegunCliente";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@clienteDNI", dni);
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+
+        public static DataTable list_Ventas_Segun_Fecha(DateTime fecha1, DateTime fecha2)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getVentasSegunCliente";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@fecha1", fecha1);
+            cmd.Parameters.AddWithValue("@fecha2", fecha2);
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+
+
     }
 }
