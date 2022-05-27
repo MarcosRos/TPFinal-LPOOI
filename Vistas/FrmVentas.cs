@@ -46,11 +46,11 @@ namespace Vistas
             aux.Columns.Add("NombreCompleto");
             foreach(DataRow item in aux.Rows)
             {
-                item["NombreCompleto"] = Convert.ToString(item["cli_Nombre"]) + ' '+ Convert.ToString(item["cli_Apellido"]);
+                item["NombreCompleto"] = Convert.ToString(item["Nombre"]) + ' '+ Convert.ToString(item["Apellido"]);
             }
 
             cmbClientes.DisplayMember = "NombreCompleto";
-            cmbClientes.ValueMember = "cli_DNI";
+            cmbClientes.ValueMember = "DNI";
             cmbClientes.DataSource = aux;
         }
 
