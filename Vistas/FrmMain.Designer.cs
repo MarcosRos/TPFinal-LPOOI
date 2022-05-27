@@ -75,6 +75,12 @@
             this.lblCliApellido = new System.Windows.Forms.Label();
             this.lblCliNombre = new System.Windows.Forms.Label();
             this.tControlGestion = new System.Windows.Forms.TabControl();
+            this.btnOrdenarDescCate = new System.Windows.Forms.Button();
+            this.rdbDescripcion = new System.Windows.Forms.RadioButton();
+            this.rdbCategoria = new System.Windows.Forms.RadioButton();
+            this.lblOrdenar = new System.Windows.Forms.Label();
+            this.btnEditarProd = new System.Windows.Forms.Button();
+            this.btnEliminarProd = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabPageProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -166,6 +172,12 @@
             // 
             // tabPageProd
             // 
+            this.tabPageProd.Controls.Add(this.btnEliminarProd);
+            this.tabPageProd.Controls.Add(this.btnEditarProd);
+            this.tabPageProd.Controls.Add(this.lblOrdenar);
+            this.tabPageProd.Controls.Add(this.rdbCategoria);
+            this.tabPageProd.Controls.Add(this.rdbDescripcion);
+            this.tabPageProd.Controls.Add(this.btnOrdenarDescCate);
             this.tabPageProd.Controls.Add(this.dgvProductos);
             this.tabPageProd.Controls.Add(this.btnProdAlta);
             this.tabPageProd.Controls.Add(this.txtProdDescripcion);
@@ -179,7 +191,7 @@
             this.tabPageProd.Location = new System.Drawing.Point(4, 22);
             this.tabPageProd.Name = "tabPageProd";
             this.tabPageProd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProd.Size = new System.Drawing.Size(887, 534);
+            this.tabPageProd.Size = new System.Drawing.Size(887, 449);
             this.tabPageProd.TabIndex = 1;
             this.tabPageProd.Text = "Producto";
             this.tabPageProd.UseVisualStyleBackColor = true;
@@ -189,17 +201,17 @@
             this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(15, 22);
+            this.dgvProductos.Location = new System.Drawing.Point(6, 6);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
-            this.dgvProductos.Size = new System.Drawing.Size(443, 298);
+            this.dgvProductos.Size = new System.Drawing.Size(443, 267);
             this.dgvProductos.TabIndex = 15;
             // 
             // btnProdAlta
             // 
-            this.btnProdAlta.Location = new System.Drawing.Point(736, 298);
+            this.btnProdAlta.Location = new System.Drawing.Point(573, 155);
             this.btnProdAlta.Name = "btnProdAlta";
-            this.btnProdAlta.Size = new System.Drawing.Size(145, 35);
+            this.btnProdAlta.Size = new System.Drawing.Size(202, 26);
             this.btnProdAlta.TabIndex = 8;
             this.btnProdAlta.Text = "Dar Alta";
             this.btnProdAlta.UseVisualStyleBackColor = true;
@@ -207,28 +219,28 @@
             // 
             // txtProdDescripcion
             // 
-            this.txtProdDescripcion.Location = new System.Drawing.Point(550, 167);
+            this.txtProdDescripcion.Location = new System.Drawing.Point(558, 88);
             this.txtProdDescripcion.Name = "txtProdDescripcion";
             this.txtProdDescripcion.Size = new System.Drawing.Size(323, 20);
             this.txtProdDescripcion.TabIndex = 5;
             // 
             // txtProdPrecio
             // 
-            this.txtProdPrecio.Location = new System.Drawing.Point(550, 216);
+            this.txtProdPrecio.Location = new System.Drawing.Point(558, 129);
             this.txtProdPrecio.Name = "txtProdPrecio";
             this.txtProdPrecio.Size = new System.Drawing.Size(323, 20);
             this.txtProdPrecio.TabIndex = 7;
             // 
             // txtProdCodigo
             // 
-            this.txtProdCodigo.Location = new System.Drawing.Point(550, 69);
+            this.txtProdCodigo.Location = new System.Drawing.Point(558, 6);
             this.txtProdCodigo.Name = "txtProdCodigo";
             this.txtProdCodigo.Size = new System.Drawing.Size(323, 20);
             this.txtProdCodigo.TabIndex = 1;
             // 
             // txtProdCategoria
             // 
-            this.txtProdCategoria.Location = new System.Drawing.Point(550, 118);
+            this.txtProdCategoria.Location = new System.Drawing.Point(558, 47);
             this.txtProdCategoria.Name = "txtProdCategoria";
             this.txtProdCategoria.Size = new System.Drawing.Size(323, 20);
             this.txtProdCategoria.TabIndex = 3;
@@ -236,7 +248,7 @@
             // lblProdDescripcion
             // 
             this.lblProdDescripcion.AutoSize = true;
-            this.lblProdDescripcion.Location = new System.Drawing.Point(482, 170);
+            this.lblProdDescripcion.Location = new System.Drawing.Point(468, 91);
             this.lblProdDescripcion.Name = "lblProdDescripcion";
             this.lblProdDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblProdDescripcion.TabIndex = 4;
@@ -245,7 +257,7 @@
             // lblProdPrecio
             // 
             this.lblProdPrecio.AutoSize = true;
-            this.lblProdPrecio.Location = new System.Drawing.Point(482, 219);
+            this.lblProdPrecio.Location = new System.Drawing.Point(468, 132);
             this.lblProdPrecio.Name = "lblProdPrecio";
             this.lblProdPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblProdPrecio.TabIndex = 6;
@@ -254,7 +266,7 @@
             // lblProdCodigo
             // 
             this.lblProdCodigo.AutoSize = true;
-            this.lblProdCodigo.Location = new System.Drawing.Point(482, 72);
+            this.lblProdCodigo.Location = new System.Drawing.Point(468, 9);
             this.lblProdCodigo.Name = "lblProdCodigo";
             this.lblProdCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblProdCodigo.TabIndex = 0;
@@ -263,7 +275,7 @@
             // lblProdCategoria
             // 
             this.lblProdCategoria.AutoSize = true;
-            this.lblProdCategoria.Location = new System.Drawing.Point(482, 121);
+            this.lblProdCategoria.Location = new System.Drawing.Point(468, 50);
             this.lblProdCategoria.Name = "lblProdCategoria";
             this.lblProdCategoria.Size = new System.Drawing.Size(54, 13);
             this.lblProdCategoria.TabIndex = 2;
@@ -299,16 +311,16 @@
             this.tabPageCli.Location = new System.Drawing.Point(4, 22);
             this.tabPageCli.Name = "tabPageCli";
             this.tabPageCli.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCli.Size = new System.Drawing.Size(887, 534);
+            this.tabPageCli.Size = new System.Drawing.Size(887, 449);
             this.tabPageCli.TabIndex = 0;
             this.tabPageCli.Text = "Cliente";
             this.tabPageCli.UseVisualStyleBackColor = true;
             // 
             // btn_OrdenarClientes
             // 
-            this.btn_OrdenarClientes.Location = new System.Drawing.Point(471, 312);
+            this.btn_OrdenarClientes.Location = new System.Drawing.Point(679, 194);
             this.btn_OrdenarClientes.Name = "btn_OrdenarClientes";
-            this.btn_OrdenarClientes.Size = new System.Drawing.Size(202, 40);
+            this.btn_OrdenarClientes.Size = new System.Drawing.Size(202, 26);
             this.btn_OrdenarClientes.TabIndex = 24;
             this.btn_OrdenarClientes.Text = "Ordenar Por Apellido";
             this.btn_OrdenarClientes.UseVisualStyleBackColor = true;
@@ -316,9 +328,9 @@
             // 
             // btnEditarCliente
             // 
-            this.btnEditarCliente.Location = new System.Drawing.Point(471, 265);
+            this.btnEditarCliente.Location = new System.Drawing.Point(679, 162);
             this.btnEditarCliente.Name = "btnEditarCliente";
-            this.btnEditarCliente.Size = new System.Drawing.Size(202, 41);
+            this.btnEditarCliente.Size = new System.Drawing.Size(202, 26);
             this.btnEditarCliente.TabIndex = 23;
             this.btnEditarCliente.Text = "Editar Clientes";
             this.btnEditarCliente.UseVisualStyleBackColor = true;
@@ -326,9 +338,9 @@
             // 
             // btnEliminarCliente
             // 
-            this.btnEliminarCliente.Location = new System.Drawing.Point(679, 265);
+            this.btnEliminarCliente.Location = new System.Drawing.Point(471, 194);
             this.btnEliminarCliente.Name = "btnEliminarCliente";
-            this.btnEliminarCliente.Size = new System.Drawing.Size(202, 41);
+            this.btnEliminarCliente.Size = new System.Drawing.Size(202, 26);
             this.btnEliminarCliente.TabIndex = 22;
             this.btnEliminarCliente.Text = "Eliminar Cliente";
             this.btnEliminarCliente.UseVisualStyleBackColor = true;
@@ -336,9 +348,9 @@
             // 
             // btnBuscarCli
             // 
-            this.btnBuscarCli.Location = new System.Drawing.Point(471, 455);
+            this.btnBuscarCli.Location = new System.Drawing.Point(471, 346);
             this.btnBuscarCli.Name = "btnBuscarCli";
-            this.btnBuscarCli.Size = new System.Drawing.Size(202, 41);
+            this.btnBuscarCli.Size = new System.Drawing.Size(202, 26);
             this.btnBuscarCli.TabIndex = 20;
             this.btnBuscarCli.Text = "Buscar Clientes";
             this.btnBuscarCli.UseVisualStyleBackColor = true;
@@ -346,14 +358,14 @@
             // 
             // txtBuscarEliminarCliApellido
             // 
-            this.txtBuscarEliminarCliApellido.Location = new System.Drawing.Point(558, 417);
+            this.txtBuscarEliminarCliApellido.Location = new System.Drawing.Point(558, 295);
             this.txtBuscarEliminarCliApellido.Name = "txtBuscarEliminarCliApellido";
             this.txtBuscarEliminarCliApellido.Size = new System.Drawing.Size(323, 20);
             this.txtBuscarEliminarCliApellido.TabIndex = 19;
             // 
             // txtBuscarEliminarCliDni
             // 
-            this.txtBuscarEliminarCliDni.Location = new System.Drawing.Point(558, 384);
+            this.txtBuscarEliminarCliDni.Location = new System.Drawing.Point(558, 262);
             this.txtBuscarEliminarCliDni.Name = "txtBuscarEliminarCliDni";
             this.txtBuscarEliminarCliDni.Size = new System.Drawing.Size(323, 20);
             this.txtBuscarEliminarCliDni.TabIndex = 18;
@@ -363,16 +375,16 @@
             this.dgvCliBuscar.AllowUserToAddRows = false;
             this.dgvCliBuscar.AllowUserToDeleteRows = false;
             this.dgvCliBuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCliBuscar.Location = new System.Drawing.Point(15, 329);
+            this.dgvCliBuscar.Location = new System.Drawing.Point(6, 226);
             this.dgvCliBuscar.Name = "dgvCliBuscar";
             this.dgvCliBuscar.ReadOnly = true;
-            this.dgvCliBuscar.Size = new System.Drawing.Size(443, 199);
+            this.dgvCliBuscar.Size = new System.Drawing.Size(443, 214);
             this.dgvCliBuscar.TabIndex = 15;
             // 
             // lblApellidoEliminar
             // 
             this.lblApellidoEliminar.AutoSize = true;
-            this.lblApellidoEliminar.Location = new System.Drawing.Point(487, 420);
+            this.lblApellidoEliminar.Location = new System.Drawing.Point(473, 298);
             this.lblApellidoEliminar.Name = "lblApellidoEliminar";
             this.lblApellidoEliminar.Size = new System.Drawing.Size(44, 13);
             this.lblApellidoEliminar.TabIndex = 21;
@@ -381,7 +393,7 @@
             // lblDNIEliminar
             // 
             this.lblDNIEliminar.AutoSize = true;
-            this.lblDNIEliminar.Location = new System.Drawing.Point(487, 384);
+            this.lblDNIEliminar.Location = new System.Drawing.Point(473, 265);
             this.lblDNIEliminar.Name = "lblDNIEliminar";
             this.lblDNIEliminar.Size = new System.Drawing.Size(26, 13);
             this.lblDNIEliminar.TabIndex = 19;
@@ -389,9 +401,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(679, 455);
+            this.btnEliminar.Location = new System.Drawing.Point(679, 346);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(202, 41);
+            this.btnEliminar.Size = new System.Drawing.Size(202, 26);
             this.btnEliminar.TabIndex = 18;
             this.btnEliminar.Text = "Eliminar Cliente";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -402,10 +414,10 @@
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(15, 19);
+            this.dgvClientes.Location = new System.Drawing.Point(6, 6);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
-            this.dgvClientes.Size = new System.Drawing.Size(443, 297);
+            this.dgvClientes.Size = new System.Drawing.Size(443, 214);
             this.dgvClientes.TabIndex = 14;
             this.dgvClientes.CurrentCellChanged += new System.EventHandler(this.dgvClientes_CurrentCellChanged);
             // 
@@ -413,7 +425,7 @@
             // 
             this.cmbOS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOS.FormattingEnabled = true;
-            this.cmbOS.Location = new System.Drawing.Point(558, 155);
+            this.cmbOS.Location = new System.Drawing.Point(558, 110);
             this.cmbOS.Name = "cmbOS";
             this.cmbOS.Size = new System.Drawing.Size(323, 21);
             this.cmbOS.TabIndex = 13;
@@ -421,9 +433,9 @@
             // btnCliAlta
             // 
             this.btnCliAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCliAlta.Location = new System.Drawing.Point(471, 215);
+            this.btnCliAlta.Location = new System.Drawing.Point(471, 162);
             this.btnCliAlta.Name = "btnCliAlta";
-            this.btnCliAlta.Size = new System.Drawing.Size(410, 41);
+            this.btnCliAlta.Size = new System.Drawing.Size(202, 26);
             this.btnCliAlta.TabIndex = 12;
             this.btnCliAlta.Text = "Dar Alta";
             this.btnCliAlta.UseVisualStyleBackColor = true;
@@ -431,35 +443,35 @@
             // 
             // txtCliDireccion
             // 
-            this.txtCliDireccion.Location = new System.Drawing.Point(558, 121);
+            this.txtCliDireccion.Location = new System.Drawing.Point(558, 84);
             this.txtCliDireccion.Name = "txtCliDireccion";
             this.txtCliDireccion.Size = new System.Drawing.Size(323, 20);
             this.txtCliDireccion.TabIndex = 7;
             // 
             // txtCliNroCarnet
             // 
-            this.txtCliNroCarnet.Location = new System.Drawing.Point(558, 189);
+            this.txtCliNroCarnet.Location = new System.Drawing.Point(558, 136);
             this.txtCliNroCarnet.Name = "txtCliNroCarnet";
             this.txtCliNroCarnet.Size = new System.Drawing.Size(323, 20);
             this.txtCliNroCarnet.TabIndex = 11;
             // 
             // txtCliDni
             // 
-            this.txtCliDni.Location = new System.Drawing.Point(558, 19);
+            this.txtCliDni.Location = new System.Drawing.Point(558, 6);
             this.txtCliDni.Name = "txtCliDni";
             this.txtCliDni.Size = new System.Drawing.Size(323, 20);
             this.txtCliDni.TabIndex = 1;
             // 
             // txtCliApellido
             // 
-            this.txtCliApellido.Location = new System.Drawing.Point(558, 53);
+            this.txtCliApellido.Location = new System.Drawing.Point(558, 32);
             this.txtCliApellido.Name = "txtCliApellido";
             this.txtCliApellido.Size = new System.Drawing.Size(323, 20);
             this.txtCliApellido.TabIndex = 3;
             // 
             // txtCliNombre
             // 
-            this.txtCliNombre.Location = new System.Drawing.Point(558, 87);
+            this.txtCliNombre.Location = new System.Drawing.Point(558, 58);
             this.txtCliNombre.Name = "txtCliNombre";
             this.txtCliNombre.Size = new System.Drawing.Size(323, 20);
             this.txtCliNombre.TabIndex = 5;
@@ -467,7 +479,7 @@
             // lblCliDireccion
             // 
             this.lblCliDireccion.AutoSize = true;
-            this.lblCliDireccion.Location = new System.Drawing.Point(487, 124);
+            this.lblCliDireccion.Location = new System.Drawing.Point(473, 87);
             this.lblCliDireccion.Name = "lblCliDireccion";
             this.lblCliDireccion.Size = new System.Drawing.Size(52, 13);
             this.lblCliDireccion.TabIndex = 6;
@@ -476,7 +488,7 @@
             // lblCliCuit
             // 
             this.lblCliCuit.AutoSize = true;
-            this.lblCliCuit.Location = new System.Drawing.Point(487, 158);
+            this.lblCliCuit.Location = new System.Drawing.Point(473, 113);
             this.lblCliCuit.Name = "lblCliCuit";
             this.lblCliCuit.Size = new System.Drawing.Size(32, 13);
             this.lblCliCuit.TabIndex = 8;
@@ -485,7 +497,7 @@
             // lblCliNroCarnet
             // 
             this.lblCliNroCarnet.AutoSize = true;
-            this.lblCliNroCarnet.Location = new System.Drawing.Point(487, 192);
+            this.lblCliNroCarnet.Location = new System.Drawing.Point(473, 139);
             this.lblCliNroCarnet.Name = "lblCliNroCarnet";
             this.lblCliNroCarnet.Size = new System.Drawing.Size(58, 13);
             this.lblCliNroCarnet.TabIndex = 10;
@@ -494,7 +506,7 @@
             // lblCliDni
             // 
             this.lblCliDni.AutoSize = true;
-            this.lblCliDni.Location = new System.Drawing.Point(487, 22);
+            this.lblCliDni.Location = new System.Drawing.Point(473, 9);
             this.lblCliDni.Name = "lblCliDni";
             this.lblCliDni.Size = new System.Drawing.Size(26, 13);
             this.lblCliDni.TabIndex = 0;
@@ -503,7 +515,7 @@
             // lblCliApellido
             // 
             this.lblCliApellido.AutoSize = true;
-            this.lblCliApellido.Location = new System.Drawing.Point(487, 56);
+            this.lblCliApellido.Location = new System.Drawing.Point(473, 35);
             this.lblCliApellido.Name = "lblCliApellido";
             this.lblCliApellido.Size = new System.Drawing.Size(44, 13);
             this.lblCliApellido.TabIndex = 2;
@@ -512,7 +524,7 @@
             // lblCliNombre
             // 
             this.lblCliNombre.AutoSize = true;
-            this.lblCliNombre.Location = new System.Drawing.Point(487, 90);
+            this.lblCliNombre.Location = new System.Drawing.Point(473, 61);
             this.lblCliNombre.Name = "lblCliNombre";
             this.lblCliNombre.Size = new System.Drawing.Size(44, 13);
             this.lblCliNombre.TabIndex = 4;
@@ -525,14 +537,72 @@
             this.tControlGestion.Location = new System.Drawing.Point(12, 27);
             this.tControlGestion.Name = "tControlGestion";
             this.tControlGestion.SelectedIndex = 0;
-            this.tControlGestion.Size = new System.Drawing.Size(895, 560);
+            this.tControlGestion.Size = new System.Drawing.Size(895, 475);
             this.tControlGestion.TabIndex = 1;
+            // 
+            // btnOrdenarDescCate
+            // 
+            this.btnOrdenarDescCate.Location = new System.Drawing.Point(573, 247);
+            this.btnOrdenarDescCate.Name = "btnOrdenarDescCate";
+            this.btnOrdenarDescCate.Size = new System.Drawing.Size(202, 26);
+            this.btnOrdenarDescCate.TabIndex = 16;
+            this.btnOrdenarDescCate.Text = "Ordenar";
+            this.btnOrdenarDescCate.UseVisualStyleBackColor = true;
+            // 
+            // rdbDescripcion
+            // 
+            this.rdbDescripcion.AutoSize = true;
+            this.rdbDescripcion.Location = new System.Drawing.Point(592, 224);
+            this.rdbDescripcion.Name = "rdbDescripcion";
+            this.rdbDescripcion.Size = new System.Drawing.Size(81, 17);
+            this.rdbDescripcion.TabIndex = 17;
+            this.rdbDescripcion.TabStop = true;
+            this.rdbDescripcion.Text = "Descripción";
+            this.rdbDescripcion.UseVisualStyleBackColor = true;
+            // 
+            // rdbCategoria
+            // 
+            this.rdbCategoria.AutoSize = true;
+            this.rdbCategoria.Location = new System.Drawing.Point(740, 224);
+            this.rdbCategoria.Name = "rdbCategoria";
+            this.rdbCategoria.Size = new System.Drawing.Size(72, 17);
+            this.rdbCategoria.TabIndex = 18;
+            this.rdbCategoria.TabStop = true;
+            this.rdbCategoria.Text = "Categoría";
+            this.rdbCategoria.UseVisualStyleBackColor = true;
+            // 
+            // lblOrdenar
+            // 
+            this.lblOrdenar.AutoSize = true;
+            this.lblOrdenar.Location = new System.Drawing.Point(468, 226);
+            this.lblOrdenar.Name = "lblOrdenar";
+            this.lblOrdenar.Size = new System.Drawing.Size(67, 13);
+            this.lblOrdenar.TabIndex = 19;
+            this.lblOrdenar.Text = "Ordenar Por:";
+            // 
+            // btnEditarProd
+            // 
+            this.btnEditarProd.Location = new System.Drawing.Point(679, 187);
+            this.btnEditarProd.Name = "btnEditarProd";
+            this.btnEditarProd.Size = new System.Drawing.Size(202, 26);
+            this.btnEditarProd.TabIndex = 20;
+            this.btnEditarProd.Text = "Editar Productos";
+            this.btnEditarProd.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarProd
+            // 
+            this.btnEliminarProd.Location = new System.Drawing.Point(471, 187);
+            this.btnEliminarProd.Name = "btnEliminarProd";
+            this.btnEliminarProd.Size = new System.Drawing.Size(202, 26);
+            this.btnEliminarProd.TabIndex = 21;
+            this.btnEliminarProd.Text = "Eliminar Productos";
+            this.btnEliminarProd.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 591);
+            this.ClientSize = new System.Drawing.Size(915, 509);
             this.Controls.Add(this.tControlGestion);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -605,6 +675,12 @@
         private System.Windows.Forms.Button btnEditarCliente;
         private System.Windows.Forms.Button btnEliminarCliente;
         private System.Windows.Forms.Button btn_OrdenarClientes;
+        private System.Windows.Forms.RadioButton rdbDescripcion;
+        private System.Windows.Forms.Button btnOrdenarDescCate;
+        private System.Windows.Forms.RadioButton rdbCategoria;
+        private System.Windows.Forms.Label lblOrdenar;
+        private System.Windows.Forms.Button btnEditarProd;
+        private System.Windows.Forms.Button btnEliminarProd;
 
 
     }
