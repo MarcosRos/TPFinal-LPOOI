@@ -21,38 +21,74 @@ namespace Vistas
         private void FrmListarVentas_Load(object sender, EventArgs e)
         {
             load_dgvVentas();
+            load_comboClientesVentas();
+            load_comboClientesProductos();
+            load_dgvVentasDetalle();
+
+        }
+
+        private void load_comboClientesVentas()
+        {
+            DataTable aux = TrabajarUsuario.list_Cliente();
+
+            aux.Columns.Add("NombreCompleto");
+            foreach (DataRow item in aux.Rows)
+            {
+                item["NombreCompleto"] = Convert.ToString(item["Nombre"]) + ' ' + Convert.ToString(item["Apellido"]);
+            }
+
+            cmbVentaCliente.DisplayMember = "NombreCompleto";
+            cmbVentaCliente.ValueMember = "DNI";
+            cmbVentaCliente.DataSource = aux;
+        }
+
+        private void load_comboClientesProductos()
+        {
+            DataTable aux = TrabajarUsuario.list_Cliente();
+
+            aux.Columns.Add("NombreCompleto");
+            foreach (DataRow item in aux.Rows)
+            {
+                item["NombreCompleto"] = Convert.ToString(item["Nombre"]) + ' ' + Convert.ToString(item["Apellido"]);
+            }
+
+            cmbCliProd.DisplayMember = "NombreCompleto";
+            cmbCliProd.ValueMember = "DNI";
+            cmbCliProd.DataSource = aux;
         }
 
 
         private void load_dgvVentas()
         {
-            dgvVentas.DataSource = TrabajarUsuario.list_Ventas();
+            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas();
         }
 
-
-        private void btnBuscarDNI_Click(object sender, EventArgs e)
+        private void load_dgvVentasDetalle()
         {
-            string dni = txtBuscarDNI.Text;
-            dgvVentas.DataSource=TrabajarUsuario.buscarVentaDNI(dni);
+            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Vendidos();
         }
 
-
-        private void btnBuscarID_Click(object sender, EventArgs e)
+        private void btnListarVentaCliente_Click(object sender, EventArgs e)
         {
-            try{
-                int id = Convert.ToInt32(txtBuscarID.Text);
-                dgvVentas.DataSource = TrabajarUsuario.buscarVentaID(id);
-
-            }catch(FormatException)
-            {
-                MessageBox.Show("Ingrese un valor de tipo entero para buscar por ID de venta", "Datos No Válidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            string dni = cmbVentaCliente.SelectedValue.ToString();
+            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas_Segun_Cliente(dni);
         }
 
-        private void btnRestart_Click(object sender, EventArgs e)
+        private void btnListarVentaFecha_Click(object sender, EventArgs e)
         {
-            load_dgvVentas();
+            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas_Segun_Fecha(dtpDesdeVenta.Value, dtpHastaVenta.Value);
         }
+
+        private void btnListarProdCli_Click(object sender, EventArgs e)
+        {
+            string dni = cmbCliProd.SelectedValue.ToString();
+            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Segun_Cliente(dni);
+        }
+
+        private void btnListarProdFecha_Click(object sender, EventArgs e)
+        {
+            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Segun_Fecha(dtpDesdeProd.Value, dtpHastaProd.Value);
+        }
+
     }
 }

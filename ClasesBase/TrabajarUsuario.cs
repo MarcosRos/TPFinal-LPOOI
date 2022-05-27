@@ -360,6 +360,28 @@ namespace ClasesBase
         }
 
 
+        public static Boolean deleteProducto(string codigo)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = " DELETE FROM producto WHERE prod_Codigo = @Codigo";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@Codigo", codigo);
+            //Almacena la cantidad de lineas afectadas por el comando
+            int valor = cmd.ExecuteNonQuery();
+            //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
+            if (valor == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public static Boolean comprobarDNI(string dni) {
             
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
@@ -632,6 +654,26 @@ namespace ClasesBase
         }
 
 
+        public static void editarProducto(string codigoAEditar, string codigo, string categoria, string descripcion, decimal precio)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "UPDATE producto SET prod_Categoria = @Categoria , prod_Descripcion = @Descripcion , prod_Precio = @Precio , prod_Codigo = @Codigo WHERE prod_Codigo = @CodigoAEditar ";
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@Codigo", codigo);
+            cmd.Parameters.AddWithValue("@CodigoAEditar", codigoAEditar);
+            cmd.Parameters.AddWithValue("@Categoria", categoria);
+            cmd.Parameters.AddWithValue("@Descripcion", descripcion);
+            cmd.Parameters.AddWithValue("@Precio", precio);
+
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+
         public static DataTable list_Cliente_Apellido()
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
@@ -686,7 +728,7 @@ namespace ClasesBase
             return dt;
         }
 
-        public static DataTable list_Productos_Segun_Cliente(int dni)
+        public static DataTable list_Productos_Segun_Cliente(string dni)
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
@@ -705,7 +747,44 @@ namespace ClasesBase
         }
 
 
-        public static DataTable list_Ventas_Segun_Cliente(int dni)
+        public static DataTable list_Productos_Vendidos()
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getProductosVendidos";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+
+        public static DataTable list_Productos_Segun_Fecha(DateTime fecha1, DateTime fecha2)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getProductosSegunRangoDeFechas";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@fecha1", fecha1);
+            cmd.Parameters.AddWithValue("@fecha2", fecha2);
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DataTable list_Ventas_Segun_Cliente(string dni)
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
@@ -729,7 +808,7 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "getVentasSegunCliente";
+            cmd.CommandText = "getVentasSegunRangoDeFechas";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@fecha1", fecha1);
             cmd.Parameters.AddWithValue("@fecha2", fecha2);

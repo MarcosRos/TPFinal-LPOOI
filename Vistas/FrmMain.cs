@@ -178,6 +178,7 @@ namespace Vistas
                 load_dgvClientes();
                 load_dgvProductos();
                 dgvClientes.Rows[0].Cells[0].Selected = false;
+                dgvProductos.Rows[0].Cells[0].Selected = false;
                 txtCliDni.Text = "";
                 txtCliApellido.Text = "";
                 txtCliNombre.Text = "";
@@ -191,6 +192,7 @@ namespace Vistas
                 load_dgvClientes();
                 load_dgvProductos();
                 dgvClientes.Rows[0].Cells[0].Selected = false;
+                dgvProductos.Rows[0].Cells[0].Selected = false;
                 txtCliDni.Text = "";
                 txtCliApellido.Text = "";
                 txtCliNombre.Text = "";
@@ -307,6 +309,67 @@ namespace Vistas
             dgvClientes.DataSource = TrabajarUsuario.list_Cliente_Apellido();
         }
 
+        private void btnOrdenarDescCate_Click(object sender, EventArgs e)
+        {
+            if (rdbCategoria.Checked == true)
+            {
+                dgvProductos.DataSource= TrabajarUsuario.list_Productos_Categoria();
+            }
+            else if (rdbDescripcion.Checked == true)
+            {
+                dgvProductos.DataSource = TrabajarUsuario.list_Productos_Descripcion();
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ningun filtro", "Filtrado fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnEliminarProd_Click(object sender, EventArgs e)
+        {
+            string codEliminar = dgvProductos.CurrentRow.Cells["Codigo"].Value.ToString();
+            Producto unProducto = new Producto();
+            unProducto.Prod_Categoria = dgvProductos.CurrentRow.Cells["Categoria"].Value.ToString();
+            unProducto.Prod_Codigo= dgvProductos.CurrentRow.Cells["Codigo"].Value.ToString();
+            unProducto.Prod_Descripcion=dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
+            unProducto.Prod_Precio = Convert.ToDecimal(dgvProductos.CurrentRow.Cells["Precio"].Value.ToString());
+
+
+            DialogResult result = MessageBox.Show("Seguro que desea eliminar este Producto? \nCodigo: " + unProducto.Prod_Codigo + "\nCategoria: " + unProducto.Prod_Categoria + "\nDescripcion: " + unProducto.Prod_Descripcion + "\nPrecio: " + unProducto.Prod_Precio, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                TrabajarUsuario.deleteProducto(codEliminar);
+                MessageBox.Show("Producto Eliminado Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                load_dgvProductos();
+            }
+        }
+
+        private void dgvProductos_CurrentCellChanged(object sender, EventArgs e)
+        {
+            if (dgvProductos.CurrentRow != null)
+            {
+                txtProdCodigo.Text = dgvProductos.CurrentRow.Cells["Codigo"].Value.ToString();
+                txtProdCategoria.Text  = dgvProductos.CurrentRow.Cells["Categoria"].Value.ToString();
+                txtProdDescripcion.Text = dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
+                txtProdPrecio.Text = dgvProductos.CurrentRow.Cells["Precio"].Value.ToString();
+            }
+        }
+
+        private void btnEditarProd_Click(object sender, EventArgs e)
+        {
+            string codigoAEditar = dgvProductos.CurrentRow.Cells["Codigo"].Value.ToString();
+            //if(Decimal.TryParse(txtProdPrecio.Text, out n1){
+            //decimal decimalConvertido = Decimal.TryParse(txtProdPrecio.Text);
+            //}
+
+            decimal decimalConvertido =  Convert.ToDecimal(txtProdPrecio.Text);
+
+            TrabajarUsuario.editarProducto(codigoAEditar, txtProdCodigo.Text, txtProdCategoria.Text, txtProdDescripcion.Text, decimalConvertido);
+            MessageBox.Show("Producto Editado Correctamente", "Edicion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            load_dgvProductos();
+            //dgvCliBuscar.DataSource = null;
+        }
 
     }
 }

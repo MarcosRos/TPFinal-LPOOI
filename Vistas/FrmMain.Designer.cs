@@ -39,6 +39,12 @@
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemMainSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageProd = new System.Windows.Forms.TabPage();
+            this.btnEliminarProd = new System.Windows.Forms.Button();
+            this.btnEditarProd = new System.Windows.Forms.Button();
+            this.lblOrdenar = new System.Windows.Forms.Label();
+            this.rdbCategoria = new System.Windows.Forms.RadioButton();
+            this.rdbDescripcion = new System.Windows.Forms.RadioButton();
+            this.btnOrdenarDescCate = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.btnProdAlta = new System.Windows.Forms.Button();
             this.txtProdDescripcion = new System.Windows.Forms.TextBox();
@@ -75,12 +81,6 @@
             this.lblCliApellido = new System.Windows.Forms.Label();
             this.lblCliNombre = new System.Windows.Forms.Label();
             this.tControlGestion = new System.Windows.Forms.TabControl();
-            this.btnOrdenarDescCate = new System.Windows.Forms.Button();
-            this.rdbDescripcion = new System.Windows.Forms.RadioButton();
-            this.rdbCategoria = new System.Windows.Forms.RadioButton();
-            this.lblOrdenar = new System.Windows.Forms.Label();
-            this.btnEditarProd = new System.Windows.Forms.Button();
-            this.btnEliminarProd = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabPageProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -196,6 +196,67 @@
             this.tabPageProd.Text = "Producto";
             this.tabPageProd.UseVisualStyleBackColor = true;
             // 
+            // btnEliminarProd
+            // 
+            this.btnEliminarProd.Location = new System.Drawing.Point(471, 187);
+            this.btnEliminarProd.Name = "btnEliminarProd";
+            this.btnEliminarProd.Size = new System.Drawing.Size(202, 26);
+            this.btnEliminarProd.TabIndex = 21;
+            this.btnEliminarProd.Text = "Eliminar Productos";
+            this.btnEliminarProd.UseVisualStyleBackColor = true;
+            this.btnEliminarProd.Click += new System.EventHandler(this.btnEliminarProd_Click);
+            // 
+            // btnEditarProd
+            // 
+            this.btnEditarProd.Location = new System.Drawing.Point(679, 187);
+            this.btnEditarProd.Name = "btnEditarProd";
+            this.btnEditarProd.Size = new System.Drawing.Size(202, 26);
+            this.btnEditarProd.TabIndex = 20;
+            this.btnEditarProd.Text = "Editar Productos";
+            this.btnEditarProd.UseVisualStyleBackColor = true;
+            this.btnEditarProd.Click += new System.EventHandler(this.btnEditarProd_Click);
+            // 
+            // lblOrdenar
+            // 
+            this.lblOrdenar.AutoSize = true;
+            this.lblOrdenar.Location = new System.Drawing.Point(468, 226);
+            this.lblOrdenar.Name = "lblOrdenar";
+            this.lblOrdenar.Size = new System.Drawing.Size(67, 13);
+            this.lblOrdenar.TabIndex = 19;
+            this.lblOrdenar.Text = "Ordenar Por:";
+            // 
+            // rdbCategoria
+            // 
+            this.rdbCategoria.AutoSize = true;
+            this.rdbCategoria.Location = new System.Drawing.Point(740, 224);
+            this.rdbCategoria.Name = "rdbCategoria";
+            this.rdbCategoria.Size = new System.Drawing.Size(72, 17);
+            this.rdbCategoria.TabIndex = 18;
+            this.rdbCategoria.TabStop = true;
+            this.rdbCategoria.Text = "Categoría";
+            this.rdbCategoria.UseVisualStyleBackColor = true;
+            // 
+            // rdbDescripcion
+            // 
+            this.rdbDescripcion.AutoSize = true;
+            this.rdbDescripcion.Location = new System.Drawing.Point(592, 224);
+            this.rdbDescripcion.Name = "rdbDescripcion";
+            this.rdbDescripcion.Size = new System.Drawing.Size(81, 17);
+            this.rdbDescripcion.TabIndex = 17;
+            this.rdbDescripcion.TabStop = true;
+            this.rdbDescripcion.Text = "Descripción";
+            this.rdbDescripcion.UseVisualStyleBackColor = true;
+            // 
+            // btnOrdenarDescCate
+            // 
+            this.btnOrdenarDescCate.Location = new System.Drawing.Point(573, 247);
+            this.btnOrdenarDescCate.Name = "btnOrdenarDescCate";
+            this.btnOrdenarDescCate.Size = new System.Drawing.Size(202, 26);
+            this.btnOrdenarDescCate.TabIndex = 16;
+            this.btnOrdenarDescCate.Text = "Ordenar";
+            this.btnOrdenarDescCate.UseVisualStyleBackColor = true;
+            this.btnOrdenarDescCate.Click += new System.EventHandler(this.btnOrdenarDescCate_Click);
+            // 
             // dgvProductos
             // 
             this.dgvProductos.AllowUserToAddRows = false;
@@ -206,6 +267,7 @@
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.Size = new System.Drawing.Size(443, 267);
             this.dgvProductos.TabIndex = 15;
+            this.dgvProductos.CurrentCellChanged += new System.EventHandler(this.dgvProductos_CurrentCellChanged);
             // 
             // btnProdAlta
             // 
@@ -539,64 +601,6 @@
             this.tControlGestion.SelectedIndex = 0;
             this.tControlGestion.Size = new System.Drawing.Size(895, 475);
             this.tControlGestion.TabIndex = 1;
-            // 
-            // btnOrdenarDescCate
-            // 
-            this.btnOrdenarDescCate.Location = new System.Drawing.Point(573, 247);
-            this.btnOrdenarDescCate.Name = "btnOrdenarDescCate";
-            this.btnOrdenarDescCate.Size = new System.Drawing.Size(202, 26);
-            this.btnOrdenarDescCate.TabIndex = 16;
-            this.btnOrdenarDescCate.Text = "Ordenar";
-            this.btnOrdenarDescCate.UseVisualStyleBackColor = true;
-            // 
-            // rdbDescripcion
-            // 
-            this.rdbDescripcion.AutoSize = true;
-            this.rdbDescripcion.Location = new System.Drawing.Point(592, 224);
-            this.rdbDescripcion.Name = "rdbDescripcion";
-            this.rdbDescripcion.Size = new System.Drawing.Size(81, 17);
-            this.rdbDescripcion.TabIndex = 17;
-            this.rdbDescripcion.TabStop = true;
-            this.rdbDescripcion.Text = "Descripción";
-            this.rdbDescripcion.UseVisualStyleBackColor = true;
-            // 
-            // rdbCategoria
-            // 
-            this.rdbCategoria.AutoSize = true;
-            this.rdbCategoria.Location = new System.Drawing.Point(740, 224);
-            this.rdbCategoria.Name = "rdbCategoria";
-            this.rdbCategoria.Size = new System.Drawing.Size(72, 17);
-            this.rdbCategoria.TabIndex = 18;
-            this.rdbCategoria.TabStop = true;
-            this.rdbCategoria.Text = "Categoría";
-            this.rdbCategoria.UseVisualStyleBackColor = true;
-            // 
-            // lblOrdenar
-            // 
-            this.lblOrdenar.AutoSize = true;
-            this.lblOrdenar.Location = new System.Drawing.Point(468, 226);
-            this.lblOrdenar.Name = "lblOrdenar";
-            this.lblOrdenar.Size = new System.Drawing.Size(67, 13);
-            this.lblOrdenar.TabIndex = 19;
-            this.lblOrdenar.Text = "Ordenar Por:";
-            // 
-            // btnEditarProd
-            // 
-            this.btnEditarProd.Location = new System.Drawing.Point(679, 187);
-            this.btnEditarProd.Name = "btnEditarProd";
-            this.btnEditarProd.Size = new System.Drawing.Size(202, 26);
-            this.btnEditarProd.TabIndex = 20;
-            this.btnEditarProd.Text = "Editar Productos";
-            this.btnEditarProd.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarProd
-            // 
-            this.btnEliminarProd.Location = new System.Drawing.Point(471, 187);
-            this.btnEliminarProd.Name = "btnEliminarProd";
-            this.btnEliminarProd.Size = new System.Drawing.Size(202, 26);
-            this.btnEliminarProd.TabIndex = 21;
-            this.btnEliminarProd.Text = "Eliminar Productos";
-            this.btnEliminarProd.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 

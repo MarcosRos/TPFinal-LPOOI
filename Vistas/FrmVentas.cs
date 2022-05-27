@@ -56,8 +56,8 @@ namespace Vistas
 
         private void load_comboProductos()
         {
-            cmbProductos.DisplayMember = "prod_Descripcion";
-            cmbProductos.ValueMember = "prod_Codigo";
+            cmbProductos.DisplayMember = "Descripcion";
+            cmbProductos.ValueMember = "Codigo";
             cmbProductos.DataSource = TrabajarUsuario.list_Productos();
         }
 
