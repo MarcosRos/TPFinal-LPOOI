@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace ClasesBase
-{
+{// xd
     public class TrabajarUsuario
     {
         public static int contarProductos()
