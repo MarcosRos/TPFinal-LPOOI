@@ -28,7 +28,7 @@ namespace Vistas
 
             for (i = 0; i < TrabajarUsuario.count_of_users(); i++)
             {
-                if ((TrabajarUsuario.list_users().Rows[i]["usu_NombreUsuario"].ToString() == txtUserName.Text) && TrabajarUsuario.list_users().Rows[i]["usu_Contraseña"].ToString() == txtPassword.Text)
+                if ((TrabajarUsuario.list_users().Rows[i]["Username"].ToString() == txtUserName.Text) && TrabajarUsuario.list_users().Rows[i]["Contraseña"].ToString() == txtPassword.Text)
                 {
                     bUserfound = true;
                     break;
@@ -37,8 +37,8 @@ namespace Vistas
 
             if (bUserfound)
             {
-                MessageBox.Show("Bienvenido/a: " + TrabajarUsuario.list_users().Rows[i]["Usu_ApellidoNombre"], "Inicio Sesión Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                rol = TrabajarUsuario.list_users().Rows[i]["rol_Codigo"].ToString();
+                MessageBox.Show("Bienvenido/a: " + TrabajarUsuario.list_users().Rows[i]["Apellido"], "Inicio Sesión Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                rol = TrabajarUsuario.list_users().Rows[i]["Rol"].ToString();
                 FrmLogin.ActiveForm.Hide();
                 oFrmMain.Show();
             }

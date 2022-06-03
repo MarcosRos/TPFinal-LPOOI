@@ -128,10 +128,10 @@ namespace Vistas
         {
             if (dgvUsuarios.CurrentRow != null) 
             { 
-            txtApellido.Text=dgvUsuarios.CurrentRow.Cells["usu_ApellidoNombre"].Value.ToString();
-            txtContraseña.Text = dgvUsuarios.CurrentRow.Cells["usu_Contraseña"].Value.ToString();
-            txtNombre.Text = dgvUsuarios.CurrentRow.Cells["usu_NombreUsuario"].Value.ToString();
-            cmbRol.SelectedValue = dgvUsuarios.CurrentRow.Cells["rol_Codigo"].Value.ToString();
+            txtApellido.Text=dgvUsuarios.CurrentRow.Cells["Apellido"].Value.ToString();
+            txtContraseña.Text = dgvUsuarios.CurrentRow.Cells["Contraseña"].Value.ToString();
+            txtNombre.Text = dgvUsuarios.CurrentRow.Cells["Username"].Value.ToString();
+            cmbRol.SelectedValue = dgvUsuarios.CurrentRow.Cells["CodigoRol"].Value.ToString();
             }
         }
 

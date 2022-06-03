@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inquilinosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alquilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,37 +86,9 @@
             this.tControlGestion.SuspendLayout();
             this.SuspendLayout();
             // 
-            // sistemaToolStripMenuItem
-            // 
-            this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
-            this.sistemaToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.sistemaToolStripMenuItem.Text = "Sistema";
-            // 
-            // inquilinosToolStripMenuItem
-            // 
-            this.inquilinosToolStripMenuItem.Name = "inquilinosToolStripMenuItem";
-            this.inquilinosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.inquilinosToolStripMenuItem.Text = "Inquilinos";
-            // 
-            // departamentosToolStripMenuItem
-            // 
-            this.departamentosToolStripMenuItem.Name = "departamentosToolStripMenuItem";
-            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.departamentosToolStripMenuItem.Text = "Departamentos";
-            // 
-            // alquilerToolStripMenuItem
-            // 
-            this.alquilerToolStripMenuItem.Name = "alquilerToolStripMenuItem";
-            this.alquilerToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.alquilerToolStripMenuItem.Text = "Alquiler";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sistemaToolStripMenuItem,
-            this.inquilinosToolStripMenuItem,
-            this.departamentosToolStripMenuItem,
-            this.alquilerToolStripMenuItem,
             this.ventasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.MenuItemMainSalir});
@@ -143,14 +111,14 @@
             // listarVentasToolStripMenuItem
             // 
             this.listarVentasToolStripMenuItem.Name = "listarVentasToolStripMenuItem";
-            this.listarVentasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.listarVentasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.listarVentasToolStripMenuItem.Text = "Listar Ventas";
             this.listarVentasToolStripMenuItem.Click += new System.EventHandler(this.listarVentasToolStripMenuItem_Click);
             // 
             // agregarVentasToolStripMenuItem
             // 
             this.agregarVentasToolStripMenuItem.Name = "agregarVentasToolStripMenuItem";
-            this.agregarVentasToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.agregarVentasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.agregarVentasToolStripMenuItem.Text = "Agregar Venta";
             this.agregarVentasToolStripMenuItem.Click += new System.EventHandler(this.agregarVentasToolStripMenuItem_Click);
             // 
@@ -631,10 +599,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inquilinosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem departamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alquilerToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MenuItemMainSalir;
         private System.Windows.Forms.TabPage tabPageProd;

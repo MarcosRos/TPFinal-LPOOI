@@ -134,7 +134,7 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM usuario WHERE usu_NombreUsuario LIKE '%' + @Username + '%' ";
+            cmd.CommandText = "SELECT * FROM vw_listar_usuarios WHERE Username LIKE '%' + @Username + '%' ";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
             //a
@@ -170,7 +170,7 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM usuario";
+            cmd.CommandText = "SELECT * FROM vw_listar_usuarios";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
 
@@ -298,7 +298,7 @@ namespace ClasesBase
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "SELECT * FROM ";
-            cmd.CommandText += " cliente WHERE cli_Apellido LIKE '%' + @apellido + '%' AND cli_DNI LIKE '%' + @dni + '%' ";
+            cmd.CommandText += " vw_listar_clientes WHERE Apellido LIKE '%' + @apellido + '%' AND DNI LIKE '%' + @dni + '%' ";
 
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
@@ -450,7 +450,7 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT * FROM venta";
+            cmd.CommandText = "SELECT * FROM vw_listar_ventas";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
 
