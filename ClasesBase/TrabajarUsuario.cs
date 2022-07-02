@@ -1,5 +1,4 @@
-﻿using System
-;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -336,49 +335,72 @@ namespace ClasesBase
         }
 
 
-        public static Boolean deleteCliente(string dni, string apellido)
+        public static string deleteCliente(string dni, string apellido)
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
             cnn.Open();
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = " DELETE FROM cliente WHERE cli_DNI = @DNI AND cli_Apellido = @Apellido ";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
-            cmd.Parameters.AddWithValue("@DNI", dni);
-            cmd.Parameters.AddWithValue("@Apellido", apellido);
-            //Almacena la cantidad de lineas afectadas por el comando
-            int valor = cmd.ExecuteNonQuery();
-            //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
-            if (valor == 0)
+
+
+            DataTable dt = buscarVentaDNI(dni);
+            if (dt.Rows.Count != 0)
             {
-                return false;
+                return "venta";
             }
             else
             {
-                return true;
+                cmd.CommandText = " DELETE FROM cliente WHERE cli_DNI = @DNI AND cli_Apellido = @Apellido ";
+                cmd.Parameters.AddWithValue("@DNI", dni);
+                cmd.Parameters.AddWithValue("@Apellido", apellido);
+                //Almacena la cantidad de lineas afectadas por el comando
+                int valor = cmd.ExecuteNonQuery();
+                //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
+                if (valor == 0)
+                {
+                    return "false";
+                }
+                else
+                {
+                    return "true";
+                }
             }
         }
 
 
-        public static Boolean deleteProducto(string codigo)
+        public static string deleteProducto(string codigo)
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
             cnn.Open();
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = " DELETE FROM producto WHERE prod_Codigo = @Codigo";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
             cmd.Parameters.AddWithValue("@Codigo", codigo);
-            //Almacena la cantidad de lineas afectadas por el comando
-            int valor = cmd.ExecuteNonQuery();
-            //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
-            if (valor == 0)
+
+            DataTable dt = new DataTable();
+            cmd.CommandText = "SELECT * FROM ventaDetalle WHERE prod_Codigo = @codigo";
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count != 0)
             {
-                return false;
+                return "venta";
             }
             else
             {
-                return true;
+                cmd.CommandText = " DELETE FROM producto WHERE prod_Codigo = @Codigo";
+
+                //Almacena la cantidad de lineas afectadas por el comando
+                int valor = cmd.ExecuteNonQuery();
+                //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
+                if (valor == 0)
+                {
+                    return "false";
+                }
+                else
+                {
+                    return "true";
+                }
             }
         }
 
@@ -822,7 +844,69 @@ namespace ClasesBase
             return dt;
         }
 
+        public static DataTable list_Cliente_segun_ObraSocial(string obraSocial)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
 
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "getClientesSegunOS";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@OS", obraSocial);
+            cmd.Connection = cnn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DataTable buscarCliApeDniNombre(string apellido, string dni, string nombre)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT * FROM ";
+            cmd.CommandText += " vw_listar_clientes WHERE Apellido LIKE '%' + @apellido + '%' AND DNI LIKE '%' + @dni + '%'  AND Nombre LIKE '%' + @nombre + '%' ";
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            //
+            cmd.Parameters.AddWithValue("@apellido", apellido);
+            cmd.Parameters.AddWithValue("@dni", dni);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static Boolean deleteVenta(string id)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+            cnn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = " DELETE FROM ventaDetalle WHERE ven_Nro = @ID";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = " DELETE FROM venta WHERE ven_Nro = @ID";
+            //Almacena la cantidad de lineas afectadas por el comando
+            int valor = cmd.ExecuteNonQuery();
+            //Si se ven afectadas 0 lineas quiere decir que no se encontraron coincidencias
+            if (valor == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }

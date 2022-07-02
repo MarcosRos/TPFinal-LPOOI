@@ -60,35 +60,78 @@ namespace Vistas
 
         private void load_dgvVentas()
         {
-            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas();
+            DataTable dt = TrabajarUsuario.list_Ventas();
+            dgvVentaCli.DataSource = dt;
+            lblVentas.Text = "Hay en total " + dt.Rows.Count.ToString() + " ventas";
         }
 
         private void load_dgvVentasDetalle()
         {
-            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Vendidos();
+            DataTable dt = TrabajarUsuario.list_Productos_Vendidos();
+            dgvProdCliente.DataSource = dt;
+            lblDetalleVenta.Text = "Hay en total " + dt.Rows.Count.ToString() + " productos vendidos";
         }
 
         private void btnListarVentaCliente_Click(object sender, EventArgs e)
         {
             string dni = cmbVentaCliente.SelectedValue.ToString();
-            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas_Segun_Cliente(dni);
+            DataTable dt = TrabajarUsuario.list_Ventas_Segun_Cliente(dni);
+            dgvVentaCli.DataSource = dt;
+            lblVentas.Text = "Hay en total " + dt.Rows.Count.ToString() + " ventas realizadas por este cliente";
         }
 
         private void btnListarVentaFecha_Click(object sender, EventArgs e)
         {
-            dgvVentaCli.DataSource = TrabajarUsuario.list_Ventas_Segun_Fecha(dtpDesdeVenta.Value, dtpHastaVenta.Value);
+            DataTable dt = TrabajarUsuario.list_Ventas_Segun_Fecha(dtpDesdeVenta.Value, dtpHastaVenta.Value);
+            dgvVentaCli.DataSource = dt;
+            lblVentas.Text = "Hay en total " + dt.Rows.Count.ToString() + " ventas en este rango de fechas";
         }
 
         private void btnListarProdCli_Click(object sender, EventArgs e)
         {
             string dni = cmbCliProd.SelectedValue.ToString();
-            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Segun_Cliente(dni);
+            DataTable dt = TrabajarUsuario.list_Productos_Segun_Cliente(dni);
+            dgvProdCliente.DataSource = dt;
+            lblDetalleVenta.Text = "Hay en total " + dt.Rows.Count.ToString() + " productos vendidos a este cliente";
         }
 
         private void btnListarProdFecha_Click(object sender, EventArgs e)
         {
-            dgvProdCliente.DataSource = TrabajarUsuario.list_Productos_Segun_Fecha(dtpDesdeProd.Value, dtpHastaProd.Value);
+            DataTable dt = TrabajarUsuario.list_Productos_Segun_Fecha(dtpDesdeProd.Value, dtpHastaProd.Value);
+            dgvProdCliente.DataSource = dt;
+            lblDetalleVenta.Text = "Hay en total "+dt.Rows.Count.ToString()+" productos en este rango de fechas";
         }
 
+        private void btnBuscarClientes_Click(object sender, EventArgs e)
+        {
+            FrmBuscarClientes frmBuscarClientes = new FrmBuscarClientes();
+            frmBuscarClientes.Show();
+        }
+
+        private void btn_BuscarCli_Click(object sender, EventArgs e)
+        {
+            FrmBuscarClientes frmBuscarClientes = new FrmBuscarClientes();
+            frmBuscarClientes.Show();
+
+        }
+
+        private void btnEliminarVenta_Click(object sender, EventArgs e)
+        {
+            string id = txtIdAEliminar.Text;
+            if (MessageBox.Show("Estas seguro que deseas eliminar esta venta? Se irá por siempre y eso es mucho tiempo!", "Confirmacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
+            {
+                Boolean resultado = TrabajarUsuario.deleteVenta(id);
+                if (resultado == true)
+                {
+                    MessageBox.Show("Venta Eliminada Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    load_dgvVentas();
+                    load_dgvVentasDetalle();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido encontrar la venta a eliminar", "Eliminacion fallida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
     }
 }

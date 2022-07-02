@@ -49,7 +49,7 @@
             this.cmbClientes.FormattingEnabled = true;
             this.cmbClientes.Location = new System.Drawing.Point(116, 12);
             this.cmbClientes.Name = "cmbClientes";
-            this.cmbClientes.Size = new System.Drawing.Size(259, 21);
+            this.cmbClientes.Size = new System.Drawing.Size(179, 21);
             this.cmbClientes.TabIndex = 0;
             // 
             // dtpFechaVenta

@@ -176,6 +176,7 @@ namespace Vistas
                 this.usuariosToolStripMenuItem.Visible = false;
                 load_comboObraSocial();
                 load_dgvClientes();
+                load_cmbObraSocial();
                 load_dgvProductos();
                 dgvClientes.Rows[0].Cells[0].Selected = false;
                 dgvProductos.Rows[0].Cells[0].Selected = false;
@@ -190,6 +191,7 @@ namespace Vistas
             {
                 load_comboObraSocial();
                 load_dgvClientes();
+                load_cmbObraSocial();
                 load_dgvProductos();
                 dgvClientes.Rows[0].Cells[0].Selected = false;
                 dgvProductos.Rows[0].Cells[0].Selected = false;
@@ -202,6 +204,13 @@ namespace Vistas
             }
         }
 
+        private void load_cmbObraSocial()
+        {
+            cmbObraSocial.DisplayMember = "OS_RazonSocial";
+            cmbObraSocial.ValueMember = "OS_RazonSocial";
+            cmbObraSocial.DataSource = TrabajarUsuario.list_ObraSocial();
+        }
+
         private void load_comboObraSocial()
         {
             cmbOS.DisplayMember = "OS_RazonSocial";
@@ -212,6 +221,8 @@ namespace Vistas
         private void load_dgvClientes()
         {
             dgvClientes.DataSource = TrabajarUsuario.list_Cliente();
+            DataTable dt = (DataTable) dgvClientes.DataSource;
+            lblClientes.Text = "Total de Clientes: "+ dt.Rows.Count.ToString();
         }
 
         private void load_dgvProductos()
@@ -224,15 +235,17 @@ namespace Vistas
         {
             string apellido = txtBuscarEliminarCliApellido.Text;
             string dni = txtBuscarEliminarCliDni.Text;
-            dgvCliBuscar.DataSource = TrabajarUsuario.buscarCliApeDni(apellido, dni);
+            DataTable dt = TrabajarUsuario.buscarCliApeDni(apellido, dni);
+            dgvCliBuscar.DataSource = dt;
+            lblClientesBuscar.Text = "Clientes segun filtro: "+dt.Rows.Count.ToString();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             string apellido = txtBuscarEliminarCliApellido.Text;
             string dni = txtBuscarEliminarCliDni.Text;
-            Boolean resultado = TrabajarUsuario.deleteCliente(dni, apellido);
-            if (resultado == true)
+            string resultado = TrabajarUsuario.deleteCliente(dni, apellido);
+            if (resultado == "true")
             {
                 MessageBox.Show("Usuario Eliminado Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 load_dgvClientes();
@@ -288,7 +301,7 @@ namespace Vistas
 
         private void btnEliminarCliente_Click(object sender, EventArgs e)
         {
-            string dniEliminar = dgvClientes.CurrentRow.Cells["cli_DNI"].Value.ToString();
+            string dniEliminar = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
             Cliente unCliente = new Cliente();
             unCliente = TrabajarUsuario.devolverCliente(dniEliminar);
             unCliente.Cli_DNI = dniEliminar;
@@ -297,10 +310,21 @@ namespace Vistas
             DialogResult result = MessageBox.Show("Seguro que desea eliminar este Cliente? \nID: " + unCliente.Cli_ID + "\nDNI: " + unCliente.Cli_DNI.ToString() + "\nApellido: " + unCliente.Cli_Apellido.ToString() + "\nNombre: " + unCliente.Cli_Nombre.ToString() + "\nDireccion: " + unCliente.Cli_Direccion.ToString() + "\nCUIT: " + unCliente.OS_CUIT.ToString() + "\nNroCarnet: " + unCliente.Cli_NroCarnet.ToString(), "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
-                TrabajarUsuario.deleteCliente(dniEliminar,unCliente.Cli_Apellido);
-                MessageBox.Show("Cliente Eliminado Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                load_dgvClientes();
-                dgvCliBuscar.DataSource = null;
+                string resultado = TrabajarUsuario.deleteCliente(dniEliminar,unCliente.Cli_Apellido);
+                if (resultado == "true")
+                {
+                    MessageBox.Show("Cliente Eliminado Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    load_dgvClientes();
+                    dgvCliBuscar.DataSource = null;
+                }
+                else if (resultado == "false")
+                {
+                    MessageBox.Show("No se ha podido encontrar al cliente", "Eliminacion fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar este cliente, ya que posee ventas a su nombre", "Eliminacion fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -339,9 +363,20 @@ namespace Vistas
             DialogResult result = MessageBox.Show("Seguro que desea eliminar este Producto? \nCodigo: " + unProducto.Prod_Codigo + "\nCategoria: " + unProducto.Prod_Categoria + "\nDescripcion: " + unProducto.Prod_Descripcion + "\nPrecio: " + unProducto.Prod_Precio, "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
-                TrabajarUsuario.deleteProducto(codEliminar);
+                string resultado = TrabajarUsuario.deleteProducto(codEliminar);
+                if (resultado=="true"){
                 MessageBox.Show("Producto Eliminado Correctamente", "Eliminacion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 load_dgvProductos();
+                }
+                else if (resultado == "false")
+                {
+                    MessageBox.Show("No se ha podido encontrar el producto", "Eliminacion fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else 
+                {
+                    MessageBox.Show("No se puede eliminar este producto, ya que existen ventas que lo poseen", "Eliminacion fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -369,6 +404,19 @@ namespace Vistas
             MessageBox.Show("Producto Editado Correctamente", "Edicion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             load_dgvProductos();
             //dgvCliBuscar.DataSource = null;
+        }
+
+        private void btnObraSocial_Click(object sender, EventArgs e)
+        {
+            string obraSocial = cmbObraSocial.SelectedValue.ToString();
+            DataTable dt = TrabajarUsuario.list_Cliente_segun_ObraSocial(obraSocial);
+            dgvCliBuscar.DataSource = dt;
+            lblClientesBuscar.Text = "Clientes segun filtro: " + dt.Rows.Count;
+        }
+
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            load_dgvClientes();
         }
 
     }
