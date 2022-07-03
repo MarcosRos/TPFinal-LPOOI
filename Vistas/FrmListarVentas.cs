@@ -102,19 +102,6 @@ namespace Vistas
             lblDetalleVenta.Text = "Hay en total "+dt.Rows.Count.ToString()+" productos en este rango de fechas";
         }
 
-        private void btnBuscarClientes_Click(object sender, EventArgs e)
-        {
-            FrmBuscarClientes frmBuscarClientes = new FrmBuscarClientes();
-            frmBuscarClientes.Show();
-        }
-
-        private void btn_BuscarCli_Click(object sender, EventArgs e)
-        {
-            FrmBuscarClientes frmBuscarClientes = new FrmBuscarClientes();
-            frmBuscarClientes.Show();
-
-        }
-
         private void btnEliminarVenta_Click(object sender, EventArgs e)
         {
             string id = txtIdAEliminar.Text;

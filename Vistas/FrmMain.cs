@@ -185,7 +185,7 @@ namespace Vistas
                 txtCliNombre.Text = "";
                 txtCliNroCarnet.Text = "";
                 txtCliDireccion.Text = "";
-                cmbOS.SelectedValue = "30 - 71096961 - 9";
+                cmbOS.SelectedIndex = 0;
             }
             else
             {
@@ -200,7 +200,7 @@ namespace Vistas
                 txtCliNombre.Text = "";
                 txtCliNroCarnet.Text = "";
                 txtCliDireccion.Text = "";
-                cmbOS.SelectedValue = "30 - 71096961 - 9";
+                cmbOS.SelectedIndex=0;
             }
         }
 
@@ -285,14 +285,23 @@ namespace Vistas
                 txtCliApellido.Text = dgvClientes.CurrentRow.Cells["Apellido"].Value.ToString();
                 txtCliNombre.Text = dgvClientes.CurrentRow.Cells["Nombre"].Value.ToString();
                 txtCliDireccion.Text = dgvClientes.CurrentRow.Cells["Direccion"].Value.ToString();
-                cmbOS.SelectedValue = dgvClientes.CurrentRow.Cells["ObraSocial"].Value.ToString();
+                
+                DataTable dt = TrabajarUsuario.list_ObraSocial();
+                for (int i=0; i<dt.Rows.Count-1;i++){
+                    Console.WriteLine(dt.Rows[i]["OS_RazonSocial"].ToString());
+                    Console.WriteLine(dgvClientes.CurrentRow.Cells["ObraSocial"].Value.ToString());
+                    if (dt.Rows[i]["OS_RazonSocial"].ToString() == dgvClientes.CurrentRow.Cells["ObraSocial"].Value.ToString())
+                    {
+                        cmbOS.SelectedIndex=i;
+                    }
+                }
                 txtCliNroCarnet.Text = dgvClientes.CurrentRow.Cells["NroCarnet"].Value.ToString();
             }
         }
 
         private void btnEditarCliente_Click(object sender, EventArgs e)
         {
-            string dniAEditar = dgvClientes.CurrentRow.Cells["cli_DNI"].Value.ToString();
+            string dniAEditar = dgvClientes.CurrentRow.Cells["DNI"].Value.ToString();
             TrabajarUsuario.editarCliente(dniAEditar, txtCliApellido.Text, txtCliNombre.Text, txtCliDireccion.Text, (string) cmbOS.SelectedValue , txtCliNroCarnet.Text, txtCliDni.Text);
             MessageBox.Show("Cliente Editado Correctamente", "Edicion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             load_dgvClientes();
@@ -417,6 +426,14 @@ namespace Vistas
         private void btnRecargar_Click(object sender, EventArgs e)
         {
             load_dgvClientes();
+            dgvClientes.Rows[0].Cells[0].Selected = false;
+            dgvProductos.Rows[0].Cells[0].Selected = false;
+            txtCliDni.Text = "";
+            txtCliApellido.Text = "";
+            txtCliNombre.Text = "";
+            txtCliNroCarnet.Text = "";
+            txtCliDireccion.Text = "";
+            cmbOS.SelectedIndex = 0;
         }
 
     }
