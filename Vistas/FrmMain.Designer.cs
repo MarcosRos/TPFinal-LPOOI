@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,9 @@
             this.lblProdCodigo = new System.Windows.Forms.Label();
             this.lblProdCategoria = new System.Windows.Forms.Label();
             this.tabPageCli = new System.Windows.Forms.TabPage();
+            this.lblClientesBuscar = new System.Windows.Forms.Label();
+            this.lblClientes = new System.Windows.Forms.Label();
+            this.btnRecargar = new System.Windows.Forms.Button();
             this.btnObraSocial = new System.Windows.Forms.Button();
             this.cmbObraSocial = new System.Windows.Forms.ComboBox();
             this.btn_OrdenarClientes = new System.Windows.Forms.Button();
@@ -79,9 +83,6 @@
             this.lblCliApellido = new System.Windows.Forms.Label();
             this.lblCliNombre = new System.Windows.Forms.Label();
             this.tControlGestion = new System.Windows.Forms.TabControl();
-            this.btnRecargar = new System.Windows.Forms.Button();
-            this.lblClientes = new System.Windows.Forms.Label();
-            this.lblClientesBuscar = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabPageProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
@@ -164,7 +165,7 @@
             this.tabPageProd.Location = new System.Drawing.Point(4, 22);
             this.tabPageProd.Name = "tabPageProd";
             this.tabPageProd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProd.Size = new System.Drawing.Size(887, 449);
+            this.tabPageProd.Size = new System.Drawing.Size(887, 471);
             this.tabPageProd.TabIndex = 1;
             this.tabPageProd.Text = "Producto";
             this.tabPageProd.UseVisualStyleBackColor = true;
@@ -355,6 +356,35 @@
             this.tabPageCli.TabIndex = 0;
             this.tabPageCli.Text = "Cliente";
             this.tabPageCli.UseVisualStyleBackColor = true;
+            // 
+            // lblClientesBuscar
+            // 
+            this.lblClientesBuscar.AutoSize = true;
+            this.lblClientesBuscar.Location = new System.Drawing.Point(6, 443);
+            this.lblClientesBuscar.Name = "lblClientesBuscar";
+            this.lblClientesBuscar.Size = new System.Drawing.Size(0, 13);
+            this.lblClientesBuscar.TabIndex = 29;
+            // 
+            // lblClientes
+            // 
+            this.lblClientes.AutoSize = true;
+            this.lblClientes.Location = new System.Drawing.Point(6, 223);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(0, 13);
+            this.lblClientes.TabIndex = 28;
+            // 
+            // btnRecargar
+            // 
+            this.btnRecargar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRecargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecargar.Location = new System.Drawing.Point(452, 17);
+            this.btnRecargar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRecargar.Name = "btnRecargar";
+            this.btnRecargar.Size = new System.Drawing.Size(65, 28);
+            this.btnRecargar.TabIndex = 27;
+            this.btnRecargar.Text = "Recargar";
+            this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
             // btnObraSocial
             // 
@@ -599,35 +629,6 @@
             this.tControlGestion.Size = new System.Drawing.Size(895, 497);
             this.tControlGestion.TabIndex = 1;
             // 
-            // btnRecargar
-            // 
-            this.btnRecargar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRecargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecargar.Location = new System.Drawing.Point(452, 17);
-            this.btnRecargar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRecargar.Name = "btnRecargar";
-            this.btnRecargar.Size = new System.Drawing.Size(65, 28);
-            this.btnRecargar.TabIndex = 27;
-            this.btnRecargar.Text = "Recargar";
-            this.btnRecargar.UseVisualStyleBackColor = true;
-            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
-            // 
-            // lblClientes
-            // 
-            this.lblClientes.AutoSize = true;
-            this.lblClientes.Location = new System.Drawing.Point(6, 223);
-            this.lblClientes.Name = "lblClientes";
-            this.lblClientes.Size = new System.Drawing.Size(0, 13);
-            this.lblClientes.TabIndex = 28;
-            // 
-            // lblClientesBuscar
-            // 
-            this.lblClientesBuscar.AutoSize = true;
-            this.lblClientesBuscar.Location = new System.Drawing.Point(6, 443);
-            this.lblClientesBuscar.Name = "lblClientesBuscar";
-            this.lblClientesBuscar.Size = new System.Drawing.Size(0, 13);
-            this.lblClientesBuscar.TabIndex = 29;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,6 +636,7 @@
             this.ClientSize = new System.Drawing.Size(915, 536);
             this.Controls.Add(this.tControlGestion);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Sistema Óptica";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
             this.cmbRol = new System.Windows.Forms.ComboBox();
             this.btnCargarUsuario = new System.Windows.Forms.Button();
             this.lblRol = new System.Windows.Forms.Label();
@@ -246,8 +247,9 @@
             this.Controls.Add(this.lblRol);
             this.Controls.Add(this.btnCargarUsuario);
             this.Controls.Add(this.cmbRol);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Registro";
-            this.Text = "Registro";
+            this.Text = "Registrar Usuarios";
             this.Load += new System.EventHandler(this.Registro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaUsuarios)).EndInit();

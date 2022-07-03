@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListarVentas));
             this.tabListarVentaProd = new System.Windows.Forms.TabControl();
             this.tabVentas = new System.Windows.Forms.TabPage();
+            this.lblEliminarVenta = new System.Windows.Forms.Label();
+            this.txtIdAEliminar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEliminarVenta = new System.Windows.Forms.Button();
             this.lblVentas = new System.Windows.Forms.Label();
@@ -57,8 +60,6 @@
             this.dgvProdCliente = new System.Windows.Forms.DataGridView();
             this.lblProdCli = new System.Windows.Forms.Label();
             this.cmbCliProd = new System.Windows.Forms.ComboBox();
-            this.txtIdAEliminar = new System.Windows.Forms.TextBox();
-            this.lblEliminarVenta = new System.Windows.Forms.Label();
             this.tabListarVentaProd.SuspendLayout();
             this.tabVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentaCli)).BeginInit();
@@ -101,6 +102,22 @@
             this.tabVentas.TabIndex = 0;
             this.tabVentas.Text = "Ventas";
             this.tabVentas.UseVisualStyleBackColor = true;
+            // 
+            // lblEliminarVenta
+            // 
+            this.lblEliminarVenta.AutoSize = true;
+            this.lblEliminarVenta.Location = new System.Drawing.Point(6, 88);
+            this.lblEliminarVenta.Name = "lblEliminarVenta";
+            this.lblEliminarVenta.Size = new System.Drawing.Size(115, 13);
+            this.lblEliminarVenta.TabIndex = 15;
+            this.lblEliminarVenta.Text = "ID de Venta a Eliminar:";
+            // 
+            // txtIdAEliminar
+            // 
+            this.txtIdAEliminar.Location = new System.Drawing.Point(127, 85);
+            this.txtIdAEliminar.Name = "txtIdAEliminar";
+            this.txtIdAEliminar.Size = new System.Drawing.Size(287, 20);
+            this.txtIdAEliminar.TabIndex = 14;
             // 
             // label1
             // 
@@ -247,7 +264,7 @@
             this.tabVentaDetalle.Location = new System.Drawing.Point(4, 22);
             this.tabVentaDetalle.Name = "tabVentaDetalle";
             this.tabVentaDetalle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVentaDetalle.Size = new System.Drawing.Size(626, 326);
+            this.tabVentaDetalle.Size = new System.Drawing.Size(626, 327);
             this.tabVentaDetalle.TabIndex = 1;
             this.tabVentaDetalle.Text = "Detalles de Venta";
             this.tabVentaDetalle.UseVisualStyleBackColor = true;
@@ -361,30 +378,15 @@
             this.cmbCliProd.Size = new System.Drawing.Size(224, 21);
             this.cmbCliProd.TabIndex = 11;
             // 
-            // txtIdAEliminar
-            // 
-            this.txtIdAEliminar.Location = new System.Drawing.Point(127, 85);
-            this.txtIdAEliminar.Name = "txtIdAEliminar";
-            this.txtIdAEliminar.Size = new System.Drawing.Size(287, 20);
-            this.txtIdAEliminar.TabIndex = 14;
-            // 
-            // lblEliminarVenta
-            // 
-            this.lblEliminarVenta.AutoSize = true;
-            this.lblEliminarVenta.Location = new System.Drawing.Point(6, 88);
-            this.lblEliminarVenta.Name = "lblEliminarVenta";
-            this.lblEliminarVenta.Size = new System.Drawing.Size(115, 13);
-            this.lblEliminarVenta.TabIndex = 15;
-            this.lblEliminarVenta.Text = "ID de Venta a Eliminar:";
-            // 
             // FrmListarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 373);
             this.Controls.Add(this.tabListarVentaProd);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmListarVentas";
-            this.Text = "FrmListarVentas";
+            this.Text = "Listar Ventas";
             this.Load += new System.EventHandler(this.FrmListarVentas_Load);
             this.tabListarVentaProd.ResumeLayout(false);
             this.tabVentas.ResumeLayout(false);
