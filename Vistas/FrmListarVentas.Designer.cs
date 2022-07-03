@@ -35,7 +35,6 @@
             this.txtIdAEliminar = new System.Windows.Forms.TextBox();
             this.btnEliminarVenta = new System.Windows.Forms.Button();
             this.lblVentas = new System.Windows.Forms.Label();
-            this.btnBuscarClientes = new System.Windows.Forms.Button();
             this.btnListarVentaCliente = new System.Windows.Forms.Button();
             this.btnListarVentaFecha = new System.Windows.Forms.Button();
             this.lblHastaVenta = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.cmbVentaCliente = new System.Windows.Forms.ComboBox();
             this.tabVentaDetalle = new System.Windows.Forms.TabPage();
             this.lblDetalleVenta = new System.Windows.Forms.Label();
-            this.btn_BuscarCli = new System.Windows.Forms.Button();
             this.btnListarProdCli = new System.Windows.Forms.Button();
             this.btnListarProdFecha = new System.Windows.Forms.Button();
             this.lblHastaProd = new System.Windows.Forms.Label();
@@ -82,7 +80,6 @@
             this.tabVentas.Controls.Add(this.txtIdAEliminar);
             this.tabVentas.Controls.Add(this.btnEliminarVenta);
             this.tabVentas.Controls.Add(this.lblVentas);
-            this.tabVentas.Controls.Add(this.btnBuscarClientes);
             this.tabVentas.Controls.Add(this.btnListarVentaCliente);
             this.tabVentas.Controls.Add(this.btnListarVentaFecha);
             this.tabVentas.Controls.Add(this.lblHastaVenta);
@@ -135,19 +132,9 @@
             this.lblVentas.Size = new System.Drawing.Size(0, 13);
             this.lblVentas.TabIndex = 12;
             // 
-            // btnBuscarClientes
-            // 
-            this.btnBuscarClientes.Location = new System.Drawing.Point(523, 6);
-            this.btnBuscarClientes.Name = "btnBuscarClientes";
-            this.btnBuscarClientes.Size = new System.Drawing.Size(97, 46);
-            this.btnBuscarClientes.TabIndex = 11;
-            this.btnBuscarClientes.Text = "Buscador de Clientes";
-            this.btnBuscarClientes.UseVisualStyleBackColor = true;
-            this.btnBuscarClientes.Click += new System.EventHandler(this.btnBuscarClientes_Click);
-            // 
             // btnListarVentaCliente
             // 
-            this.btnListarVentaCliente.Location = new System.Drawing.Point(420, 6);
+            this.btnListarVentaCliente.Location = new System.Drawing.Point(523, 4);
             this.btnListarVentaCliente.Name = "btnListarVentaCliente";
             this.btnListarVentaCliente.Size = new System.Drawing.Size(97, 23);
             this.btnListarVentaCliente.TabIndex = 10;
@@ -233,13 +220,12 @@
             this.cmbVentaCliente.FormattingEnabled = true;
             this.cmbVentaCliente.Location = new System.Drawing.Point(190, 6);
             this.cmbVentaCliente.Name = "cmbVentaCliente";
-            this.cmbVentaCliente.Size = new System.Drawing.Size(224, 21);
+            this.cmbVentaCliente.Size = new System.Drawing.Size(327, 21);
             this.cmbVentaCliente.TabIndex = 1;
             // 
             // tabVentaDetalle
             // 
             this.tabVentaDetalle.Controls.Add(this.lblDetalleVenta);
-            this.tabVentaDetalle.Controls.Add(this.btn_BuscarCli);
             this.tabVentaDetalle.Controls.Add(this.btnListarProdCli);
             this.tabVentaDetalle.Controls.Add(this.btnListarProdFecha);
             this.tabVentaDetalle.Controls.Add(this.lblHastaProd);
@@ -266,19 +252,9 @@
             this.lblDetalleVenta.Size = new System.Drawing.Size(0, 13);
             this.lblDetalleVenta.TabIndex = 22;
             // 
-            // btn_BuscarCli
-            // 
-            this.btn_BuscarCli.Location = new System.Drawing.Point(523, 6);
-            this.btn_BuscarCli.Name = "btn_BuscarCli";
-            this.btn_BuscarCli.Size = new System.Drawing.Size(97, 46);
-            this.btn_BuscarCli.TabIndex = 21;
-            this.btn_BuscarCli.Text = "Buscador de Clientes";
-            this.btn_BuscarCli.UseVisualStyleBackColor = true;
-            this.btn_BuscarCli.Click += new System.EventHandler(this.btn_BuscarCli_Click);
-            // 
             // btnListarProdCli
             // 
-            this.btnListarProdCli.Location = new System.Drawing.Point(420, 6);
+            this.btnListarProdCli.Location = new System.Drawing.Point(523, 9);
             this.btnListarProdCli.Name = "btnListarProdCli";
             this.btnListarProdCli.Size = new System.Drawing.Size(97, 23);
             this.btnListarProdCli.TabIndex = 20;
@@ -364,7 +340,7 @@
             this.cmbCliProd.FormattingEnabled = true;
             this.cmbCliProd.Location = new System.Drawing.Point(190, 6);
             this.cmbCliProd.Name = "cmbCliProd";
-            this.cmbCliProd.Size = new System.Drawing.Size(224, 21);
+            this.cmbCliProd.Size = new System.Drawing.Size(327, 21);
             this.cmbCliProd.TabIndex = 11;
             // 
             // FrmListarVentas
@@ -413,9 +389,7 @@
         private System.Windows.Forms.DataGridView dgvProdCliente;
         private System.Windows.Forms.Label lblProdCli;
         private System.Windows.Forms.ComboBox cmbCliProd;
-        private System.Windows.Forms.Button btnBuscarClientes;
         private System.Windows.Forms.Label lblDetalleVenta;
-        private System.Windows.Forms.Button btn_BuscarCli;
         private System.Windows.Forms.Label lblVentas;
         private System.Windows.Forms.Button btnEliminarVenta;
         private System.Windows.Forms.Label lblEliminarVenta;

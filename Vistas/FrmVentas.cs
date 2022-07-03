@@ -18,6 +18,7 @@ namespace Vistas
         }
 
         private DataTable dtProdVenta;
+        private FrmBuscarClientes frmBuscarClientes = new FrmBuscarClientes();
 
         private void FrmVentas_Load(object sender, EventArgs e)
         {
@@ -46,7 +47,7 @@ namespace Vistas
             aux.Columns.Add("NombreCompleto");
             foreach(DataRow item in aux.Rows)
             {
-                item["NombreCompleto"] = Convert.ToString(item["Nombre"]) + ' '+ Convert.ToString(item["Apellido"]);
+                item["NombreCompleto"] = Convert.ToString(item["Nombre"]) + ' '+ Convert.ToString(item["Apellido"])+ ' '+ Convert.ToString(item["DNI"]);
             }
 
             cmbClientes.DisplayMember = "NombreCompleto";
@@ -150,5 +151,19 @@ namespace Vistas
                 }
             }
         }
+
+        private void btnBuscarClientes_Click(object sender, EventArgs e)
+        {
+            frmBuscarClientes.Show();
+            frmBuscarClientes.dgvClientes.CurrentCellChanged += button_clicked;
+        }
+
+        public void button_clicked(object sender, EventArgs e)
+        {
+            Cliente unCliente = new Cliente();
+            unCliente= frmBuscarClientes.unCliente;
+            cmbClientes.SelectedValue = unCliente.Cli_DNI;
+        }
+
+        }
     }
-}

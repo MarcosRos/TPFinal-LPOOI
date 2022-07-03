@@ -63,6 +63,7 @@
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(319, 151);
             this.dgvClientes.TabIndex = 1;
+            this.dgvClientes.CurrentCellChanged += new System.EventHandler(this.dgvClientes_CurrentCellChanged);
             // 
             // label1
             // 
@@ -200,6 +201,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBuscarClientes";
             this.Text = "Buscar Clientes";
+            this.Load += new System.EventHandler(this.FrmBuscarClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,7 +211,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtDNI;
-        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBuscar;
@@ -222,5 +223,6 @@
         private System.Windows.Forms.RadioButton rbApellido;
         private System.Windows.Forms.RadioButton rbDNI;
         private System.Windows.Forms.Button btnOrdenar;
+        public System.Windows.Forms.DataGridView dgvClientes;
     }
 }
