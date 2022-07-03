@@ -33,7 +33,6 @@
             this.tabVentas = new System.Windows.Forms.TabPage();
             this.lblEliminarVenta = new System.Windows.Forms.Label();
             this.txtIdAEliminar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnEliminarVenta = new System.Windows.Forms.Button();
             this.lblVentas = new System.Windows.Forms.Label();
             this.btnBuscarClientes = new System.Windows.Forms.Button();
@@ -81,7 +80,6 @@
             // 
             this.tabVentas.Controls.Add(this.lblEliminarVenta);
             this.tabVentas.Controls.Add(this.txtIdAEliminar);
-            this.tabVentas.Controls.Add(this.label1);
             this.tabVentas.Controls.Add(this.btnEliminarVenta);
             this.tabVentas.Controls.Add(this.lblVentas);
             this.tabVentas.Controls.Add(this.btnBuscarClientes);
@@ -118,15 +116,6 @@
             this.txtIdAEliminar.Name = "txtIdAEliminar";
             this.txtIdAEliminar.Size = new System.Drawing.Size(287, 20);
             this.txtIdAEliminar.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "label1";
             // 
             // btnEliminarVenta
             // 
@@ -428,7 +417,6 @@
         private System.Windows.Forms.Label lblDetalleVenta;
         private System.Windows.Forms.Button btn_BuscarCli;
         private System.Windows.Forms.Label lblVentas;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEliminarVenta;
         private System.Windows.Forms.Label lblEliminarVenta;
         private System.Windows.Forms.TextBox txtIdAEliminar;
