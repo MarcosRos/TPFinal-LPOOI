@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVentas));
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.dtpFechaVenta = new System.Windows.Forms.DateTimePicker();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -167,8 +168,9 @@
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.dtpFechaVenta);
             this.Controls.Add(this.cmbClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVentas";
-            this.Text = "FrmVentas";
+            this.Text = "Crear Ventas";
             this.Load += new System.EventHandler(this.FrmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NumUDCantProd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdVenta)).EndInit();

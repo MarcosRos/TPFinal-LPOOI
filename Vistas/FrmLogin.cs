@@ -63,5 +63,12 @@ namespace Vistas
             btnIngresar.BackColor = SystemColors.GradientActiveCaption;
             btnIngresar.Font = new Font("Impact", 9, FontStyle.Regular);
         }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Version version = assembly.GetName().Version;
+            MessageBox.Show("Gracias por usar nuestro Software! \n\nVersion: "+version, "Informacion del producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
