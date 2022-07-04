@@ -404,17 +404,42 @@ namespace ClasesBase
             }
         }
 
-        public static Boolean comprobarDNI(string dni) {
+        public static Boolean comprobarDNIExistente(string dni) {
             
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
-            cnn.Open();
+            
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "SELECT COUNT(*) FROM cliente WHERE cli_DNI = @DNI;";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = cnn;
             cmd.Parameters.AddWithValue("@DNI", dni);
+            cnn.Open();
             Int32 valor = Convert.ToInt32( cmd.ExecuteScalar());
+            cnn.Close();
             if (valor!=0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static Boolean comprobarCarnetExistente(string carnet)
+        {
+
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.OpticaConnectionString);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM cliente WHERE cli_NroCarnet = @carnet;";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@carnet", carnet);
+            cnn.Open();
+            Int32 valor = Convert.ToInt32(cmd.ExecuteScalar());
+            cnn.Close();
+            if (valor != 0)
             {
                 return false;
             }

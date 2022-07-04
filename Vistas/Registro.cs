@@ -137,7 +137,7 @@ namespace Vistas
 
         private void btnEditarUsuario_Click(object sender, EventArgs e)
         {
-            string usernameAEditar = dgvUsuarios.CurrentRow.Cells["usu_NombreUsuario"].Value.ToString();
+            string usernameAEditar = dgvUsuarios.CurrentRow.Cells["Username"].Value.ToString();
             TrabajarUsuario.editarUsuario(usernameAEditar, txtApellido.Text, txtContraseña.Text, txtNombre.Text, (int) cmbRol.SelectedValue);
             MessageBox.Show("Usuario Editado Correctamente", "Edicion exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             load_dgvUsuarios();
@@ -146,7 +146,7 @@ namespace Vistas
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            string username = dgvUsuarios.CurrentRow.Cells["usu_NombreUsuario"].Value.ToString();
+            string username = dgvUsuarios.CurrentRow.Cells["Username"].Value.ToString();
             Usuario unUsuario = new Usuario();
             unUsuario=TrabajarUsuario.devolverUsuario(username);
             unUsuario.Usu_NombreUsuario = username;
