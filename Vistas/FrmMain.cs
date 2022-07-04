@@ -49,8 +49,9 @@ namespace Vistas
                     Cliente cliente = new Cliente();
                     string dniAux = txtCliDni.Text;
                     Boolean unicidad = TrabajarUsuario.comprobarDNIExistente(dniAux);
+                    Boolean carnetIncorrecto = TrabajarUsuario.comprobarCarnetExistente(txtCliNroCarnet.Text);
 
-                    if (unicidad == true)
+                    if (unicidad && carnetIncorrecto)
                     {
                         cliente.Cli_DNI = txtCliDni.Text;
                         cliente.Cli_Apellido = txtCliApellido.Text;
@@ -78,7 +79,22 @@ namespace Vistas
                     }
                     else
                     {
-                        MessageBox.Show("No se ha agregado el cliente, ya que posee un DNI ya existente", "Carga Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (!unicidad && !carnetIncorrecto)
+                        {
+                            MessageBox.Show("No se ha agregado el cliente, ya que posee un DNI y Nro de Carnet ya existentes", "Carga Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (!unicidad)
+                            {
+                                MessageBox.Show("No se ha agregado el cliente, ya que posee un DNI ya existente", "Carga Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se ha agregado el cliente, ya que posee un Nro de Carnet ya existente", "Carga Fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        
                     }
                 }
             }
