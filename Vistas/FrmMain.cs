@@ -182,21 +182,23 @@ namespace Vistas
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            if (FrmLogin.rol == "1")
+            if (FrmLogin.rol == "Administrador")
             {
                 this.tControlGestion.TabPages.Remove(tabPageCli);
                 this.ventasToolStripMenuItem.Visible = false;
+                load_dgvProductos();
             }
-            else if (FrmLogin.rol == "2")
+            else if (FrmLogin.rol == "Operador")
             {
+                Console.WriteLine(FrmLogin.rol);
                 this.tControlGestion.TabPages.Remove(tabPageProd);
                 this.usuariosToolStripMenuItem.Visible = false;
                 load_comboObraSocial();
                 load_dgvClientes();
                 load_cmbObraSocial();
-                load_dgvProductos();
+                //load_dgvProductos();
                 dgvClientes.Rows[0].Cells[0].Selected = false;
-                dgvProductos.Rows[0].Cells[0].Selected = false;
+                //dgvProductos.Rows[0].Cells[0].Selected = false;
                 txtCliDni.Text = "";
                 txtCliApellido.Text = "";
                 txtCliNombre.Text = "";
